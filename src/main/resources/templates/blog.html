@@ -1,23 +1,26 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <!--/*@thymesVar id="title" type="com.rhontprogect.blog.Controllers.basicController"*/-->
     <title th:text="${title}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 </head>
 <body>
-<!--/*@thymesVar id="title" type="com.rhontprogect.blog.Controllers.basicController"*/-->
+
 
 <header th:replace="blocks/header::header"></header>
-
-<div class="album py-5 bg-light">
-    <div class="container">
+    <div class="container mt-5">
         <h1>Блог сайта</h1>
-    </div>
-</div>
 
-<footer th:insert="blocks/footer :: footer"></footer>>
+        <div th:each="element : ${articles}">
+            <h3 th:text="${element.tittle}"/>
+            <p th:text="${element.anons}"/>
+            <a th:href="'/blog/'+${element.id}"> Детальнее</a>
+    </div>
+    </div>
+
+<footer th:insert="blocks/footer :: footer"></footer>
 
 </body>
 </html>
